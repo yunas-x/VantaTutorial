@@ -6,7 +6,7 @@ from .deserializers.PersonJSONRepresentation import PersonJSONRepresentation
 import pathlib
 
 def main():
-    path = pathlib.Path("./OOP/example.json")
+    path = pathlib.Path("./Lesson 2/example.json")
     file = JSONFile(path)
     person = PersonJSONRepresentation(file).person(PersonJSONParser(PetJSONParser()))
 
