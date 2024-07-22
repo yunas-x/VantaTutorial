@@ -1,0 +1,36 @@
+{
+	"name": "Ivan",
+	"gender": "male",
+	"birthDate": "12.12.2002",
+	"pets": [
+	{
+		"name": "Toozik",
+		"gender": "male",
+		"species": "dog",
+		"birthDate": "12.12.2018"
+	},
+	{
+		"name": "Moorzik",
+		"gender": "male",
+		"species": "cat",
+		"birthDate": "12.12.2012"
+	},
+	{
+		"name": "Mooska",
+		"gender": "female",
+		"species": "cat",
+		"birthDate": "12.12.2022"
+	},
+	{
+		"name": "Kroshka",
+		"gender": "female",
+		"birthDate": "12.12.2023"
+	},
+	{
+		"name": "Toshka",
+		"gender": "female",
+		"species": "cat",
+		"birthDate": "12.12.2023"
+	}
+	]
+}
