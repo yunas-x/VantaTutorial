@@ -1,0 +1,44 @@
+* {
+    margin: auto;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+}
+
+td {
+    text-align: center;
+    background-color: #BA7A3A;
+    width: 65px;
+    height: 65px;
+}
+
+p {
+    display: inline-block;
+}
+
+.noPieceHere {
+    background-color: #F0D2B4;
+}
+
+.red-piece {
+    width: 20px;
+    height: 20px;
+    padding: 12px;
+    background-color: red;
+    border: 1px solid white;
+    border-radius: 50px;
+}
+
+.may-go {
+    width: 3px;
+    height: 3px;
+    padding: 6px;
+    background-color: green;
+    border: 1px solid limegreen;
+    border-radius: 10px;
+}

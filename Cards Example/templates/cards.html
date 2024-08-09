@@ -1,0 +1,24 @@
+<ul>
+  {% for card in hand.cards %}
+  <li>
+    {{card.rank}} of {{card.suit}}
+  </li>
+  {% endfor %}
+</ul>
+
+<p>Score: {{hand.score}}</p>
+
+{% if hand.is_game_on %}
+<button hx-get="/cards" hx-swap="innerHTML" hx-target="#cards">More Please</button>
+
+{% elif hand.is_game_won %}
+<button disabled>You Won!</button>
+
+{% elif hand.is_game_lost %}
+<button disabled style="color: black; background-color: red">You have lost</button>
+
+{% else %}
+<button disabled style="color: black; background-color: red">Error</button>
+
+{% endif %}
+

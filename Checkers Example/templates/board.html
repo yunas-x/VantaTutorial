@@ -1,0 +1,33 @@
+{% for ind in range(1,4) %}
+    {% if ind % 2 != 0 %}
+    <tr>
+        {% for jnd in range(1,4) %}
+            {% if jnd % 2 != 0 %}
+            <td hx-get="/board/{{ind}}/{{jnd}}" hx-swap="innerHTML" hx-trigger="click", hx-target="#board">
+                {% if board.cell_with(ind, jnd).is_occupied %}
+                    <p class="red-piece"></p>
+                {% elif board.cell_with(ind, jnd) in highlighted %}
+                    <p class="may-go"></p>
+                {% endif %}
+            </td>
+            {% else %}
+            <td class="noPieceHere"></td>
+            {% endif %}
+        {% endfor %}
+    </tr>
+    {% else %}
+        {% for jnd in range(1,4) %}
+            {% if jnd % 2 != 0 %}
+            <td class="noPieceHere"></td>
+            {% else %}
+            <td hx-get="/board/{{ind}}/{{jnd}}" hx-swap="innerHTML" hx-trigger="click", hx-target="#board">
+                {% if board.cell_with(ind, jnd).is_occupied %}
+                    <p class="red-piece"></p>
+                {% elif board.cell_with(ind, jnd) in highlighted %}
+                    <p class="may-go"></p>
+                {% endif %}
+            </td>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endfor %}
