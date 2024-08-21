@@ -5,6 +5,7 @@ from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from Board import three_x_three_board
+from Log import log
 
 app = FastAPI(summary="Demo",
               description="Demo for Vanta",
@@ -15,7 +16,6 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
 board = three_x_three_board()
-selected_cell = None
 
 @app.get("/", response_class=HTMLResponse)
 async def index(request: Request):
@@ -32,25 +32,15 @@ async def index(request: Request, hx_request: Annotated[Union[str, None], Header
 @app.get("/board/{coord_x}/{coord_y}", response_class=HTMLResponse)
 async def index(coord_x: int, coord_y: int, request: Request, hx_request: Annotated[Union[str, None], Header()] = None):
 
-    # Selected cell
-    cell = board.cell_with(coord_x=coord_x, coord_y=coord_y)
+    current_cell = board.cell_with(coord_x=coord_x, coord_y=coord_y)
+    previous_cell = log.pop() if log else None
 
-    # If occupied evaluate the cells where we can go
-    if cell.is_occupied:
-        cells_to_move = board.can_move_from(cell=cell)
-    else:
+    if board.move(previous_cell, current_cell):
         cells_to_move = []
+    else:
+        log.append(current_cell)
+        cells_to_move = board.can_move_from(cell=current_cell)
 
-
-    if selected_cell is None and cells_to_move:
-        selected_cell == cell
-
-    # if selected_cell is not None and cell in cells_to_move:
-    #   move_figure()
-    # if selected_cell is not None and cell not in cells_to_move
-    #   dont_move_figure()
-    # if selected_cell is None and not cells_to_move
-    #   ignore()
 
     if hx_request:
         return templates.TemplateResponse(

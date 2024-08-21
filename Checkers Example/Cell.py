@@ -8,4 +8,4 @@ class Cell:
     is_occupied: bool
 
     def reacheable_from(self, other: Self):
-        return (not self.is_occupied and (other.coord_x + 1 == self.coord_x or other.coord_x - 1 == self.coord_x))
+        return (not self.is_occupied and (other.coord_x + 1 == self.coord_x))
