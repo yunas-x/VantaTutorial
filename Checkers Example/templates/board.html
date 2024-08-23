@@ -4,6 +4,10 @@
         {% for jnd in range(1,9) %}
             {% if jnd % 2 != 0 %}
             <td hx-get="/board/{{ind}}/{{jnd}}" hx-swap="innerHTML" hx-trigger="click", hx-target="#board">
+                <!-- {% if board.cell_with(ind, jnd).player_id == 1  %}-->
+                    <!-- <p class="red-piece"></p> -->
+                <!-- {% elif board.cell_with(ind, jnd).player_id == 2  %}-->
+                    <!-- <p class="black-piece"></p> -->
                 {% if board.cell_with(ind, jnd).is_occupied %}
                     <p class="red-piece"></p>
                 {% elif board.cell_with(ind, jnd) in highlighted %}
@@ -21,6 +25,10 @@
             <td class="noPieceHere"></td>
             {% else %}
             <td hx-get="/board/{{ind}}/{{jnd}}" hx-swap="innerHTML" hx-trigger="click", hx-target="#board">
+                <!-- {% if board.cell_with(ind, jnd).player_id == 1  %}-->
+                    <!-- <p class="red-piece"></p> -->
+                <!-- {% elif board.cell_with(ind, jnd).player_id == 2  %}-->
+                    <!-- <p class="black-piece"></p> -->
                 {% if board.cell_with(ind, jnd).is_occupied %}
                     <p class="red-piece"></p>
                 {% elif board.cell_with(ind, jnd) in highlighted %}

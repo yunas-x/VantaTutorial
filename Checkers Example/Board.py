@@ -13,6 +13,7 @@ class Board:
         return selection[0]
     
     def move(self, cell_from: Cell, cell_to: Cell) -> bool:
+        # тут еще должна проверка на рубку шашки врага
         if cell_from and cell_to in self.can_move_from(cell_from):
             cell_from.is_occupied = False
             cell_to.is_occupied = True
